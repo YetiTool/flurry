@@ -25,6 +25,7 @@ try:
     # Ansible may not have pre-installed this
     from influxdb import InfluxDBClient # database lib
     localDBClient = InfluxDBClient("localhost", port, user, password, dbname)
+    print "Connected to local db"
 
 except:
     print "Unable to initialise local database. Have libs been installed? Or check DatabaseStorage credentials?"
@@ -57,7 +58,15 @@ def callback(ch, method, properties, body):
     ]
         
     # Send the JSON data to InfluxDB
-    if localDBClient != None: localDBClient.write_points(data)    
+    if localDBClient != None: 
+        try:
+            localDBClient.write_points(data)
+            print "Written to db OK"    
+        except:
+            print "Failed to write to db."
+    else:
+        print "Did not attempt to write to db: client was not initialised."
+
 
 channel.basic_consume(
     queue='machine_status_1', on_message_callback=callback, auto_ack=True)
