@@ -13,7 +13,7 @@ machine_id = 'test_local4'
 name = 'f-random_number'
 value = 1
 
-message = "time:" + str(datetime.datetime.now()) + "|machineID:" + machine_id + "|" + name + ":" + str(value)
+message = "time;" + str(datetime.datetime.now()) + "|machineID;" + machine_id + "|" + name + ";" + str(value)
 
 channel.basic_publish(exchange='', routing_key='machine_status_1', body=message)
 print(" [x] Sent:" + message)

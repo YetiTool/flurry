@@ -40,12 +40,12 @@ def callback(ch, method, properties, body):
     
     for pair in msg_elements:
         if pair.startswith('time'):
-            time = pair.split(":")[1]
+            time = pair.split(";")[1]
         elif pair.startswith('machineID'):
             machineID = pair.split(":")[1]
         else:
-            name = pair.split(":")[0]
-            value = pair.split(":")[1]
+            name = pair.split(";")[0]
+            value = pair.split(";")[1]
 
     data = [
         {
