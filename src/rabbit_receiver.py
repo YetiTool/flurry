@@ -51,7 +51,7 @@ def callback(ch, method, properties, body):
         {
             "measurement": machineID,
             "tags": {
-                "sw_branch": "flurry master",
+                "source": "rabbit_receiver",
             },
             "time": time,
             "fields": {
@@ -64,7 +64,7 @@ def callback(ch, method, properties, body):
     if localDBClient != None: 
         try:
             localDBClient.write_points(data)
-            print "Written to db OK: "    
+            print "Written to db OK"    
         except:
             print "Failed to write to db."
     else:

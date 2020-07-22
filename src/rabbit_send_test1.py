@@ -9,7 +9,7 @@ channel = connection.channel()
 
 channel.queue_declare(queue='machine_status_1')
 
-machine_id = 'test_local'
+machine_id = 'test_local4'
 name = 'f-random_number'
 value = 1
 
