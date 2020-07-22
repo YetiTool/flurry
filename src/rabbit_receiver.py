@@ -63,8 +63,9 @@ def callback(ch, method, properties, body):
     # Send the JSON data to InfluxDB
     if localDBClient != None: 
         try:
+            print data    
             localDBClient.write_points(data)
-            print "Written to db OK"    
+            print "Written to db OK:"
         except:
             print "Failed to write to db."
     else:
