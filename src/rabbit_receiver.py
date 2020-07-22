@@ -55,7 +55,7 @@ def callback(ch, method, properties, body):
             },
             "time": time,
             "fields": {
-                name: value
+                name: float(value)
             }
         }
     ]
