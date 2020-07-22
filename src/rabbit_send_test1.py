@@ -10,7 +10,7 @@ channel = connection.channel()
 channel.queue_declare(queue='machine_status_1')
 
 machine_id = 'test_local'
-name = 'spindle_on_off'
+name = 'f-random_number'
 value = 1
 
 message = "time:" + str(datetime.datetime.now()) + "|machineID:" + machine_id + "|" + name + ":" + str(value)
