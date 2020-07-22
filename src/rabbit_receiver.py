@@ -42,7 +42,7 @@ def callback(ch, method, properties, body):
         if pair.startswith('time'):
             time = pair.split(";")[1]
         elif pair.startswith('machineID'):
-            machineID = pair.split(":")[1]
+            machineID = pair.split(";")[1]
         else:
             name = pair.split(";")[0]
             value = pair.split(";")[1]
