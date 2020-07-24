@@ -1,4 +1,4 @@
 #!/bin/bash
-echo "start msg_receiver_app"
-cd /home/rabbit/flurry/src/
-exec python rabbit_receiver.py
+echo "start easycut"
+cd /home/pi/easycut-smartbench/src/
+exec python main.py
