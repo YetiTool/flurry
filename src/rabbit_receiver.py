@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import pika
-
+import json
 
 ### INITIALISE RABBITMQ
 
@@ -34,31 +34,7 @@ except:
 def callback(ch, method, properties, body):
     print(" [x] Received %r" % body)
 
-# EXAMPLE MSG: time:2020-07-22 14:58:49.234871|machineID:test_local|spindle_on_off:1
-    
-    msg_elements = body.split("|")
-    
-    for pair in msg_elements:
-        if pair.startswith('time'):
-            time = pair.split(";")[1]
-        elif pair.startswith('machineID'):
-            machineID = pair.split(";")[1]
-        else:
-            name = pair.split(";")[0]
-            value = pair.split(";")[1]
-
-    data = [
-        {
-            "measurement": machineID,
-            "tags": {
-                "source": "rabbit_receiver",
-            },
-            "time": time,
-            "fields": {
-                name: float(value)
-            }
-        }
-    ]
+    data = json.loads(body)
         
     # Send the JSON data to InfluxDB
     if localDBClient != None: 
